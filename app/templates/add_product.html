@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>Add Product</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+            {% for error in form.name.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.price.label(class="form-label") }}
+            {{ form.price(class="form-control") }}
+            {% for error in form.price.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.description.label(class="form-label") }}
+            {{ form.description(class="form-control", rows=4) }}
+            {% for error in form.description.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.image.label(class="form-label") }}
+            {{ form.image(class="form-control") }}
+            {% for error in form.image.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</div>
+
+{% endblock %}
